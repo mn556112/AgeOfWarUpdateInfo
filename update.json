@@ -12,7 +12,7 @@
             "image": "rbxassetid://123456789",
             "title": "새로운 맵 추가",
             "description": "사막 테마의 신규 맵이 추가되었습니다.",
-            "subtitle": "신규 콘텐츠",
+            "subtitle": "신규 콘텐츠"
         },
         {
             "type": "title",
@@ -23,7 +23,7 @@
             "image": "rbxassetid://987654321",
             "title": "이동 버그 수정",
             "description": "특정 구간에서 캐릭터가 멈추는 버그를 수정했습니다."
-            "subtitle": "버그수정",
+            "subtitle": "버그수정"
         }
     ]
 }
