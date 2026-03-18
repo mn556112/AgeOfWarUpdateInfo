@@ -1,6 +1,27 @@
 {
-    "version": "v0.0.1",
-    "message": "<font size=\"18\"><b>📦 v0.0.1 패치노트</b></font>\n\n<font color=\"#78FF8A\"><b>✅ 추가</b></font>\n<font color=\"#FFFFFF\">• 게임 기본 시스템 구현\n• 플레이어 이동 및 기본 UI 추가</font>\n\n<font color=\"#FFD966\"><b>🔧 수정</b></font>\n<font color=\"#FFFFFF\">• 초기 버그 수정\n• 성능 최적화</font>\n\n<font color=\"#A0A0A0\" size=\"12\">🕒 2025-03-19</font>",
+    "version": "v0.3.2",
     "date": "2025-03-19",
-    "critical": false
+    "critical": false,
+    "blocks": [
+        {
+            "type": "title",
+            "text": "v0.0.1 패치노트"
+        },
+        {
+            "type": "card",
+            "image": "rbxassetid://123456789",
+            "title": "새로운 맵 추가",
+            "description": "사막 테마의 신규 맵이 추가되었습니다."
+        },
+        {
+            "type": "title",
+            "text": "버그 수정"
+        },
+        {
+            "type": "card",
+            "image": "rbxassetid://987654321",
+            "title": "이동 버그 수정",
+            "description": "특정 구간에서 캐릭터가 멈추는 버그를 수정했습니다."
+        }
+    ]
 }
