@@ -6,11 +6,27 @@
   <title>패치노트</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0f0f0f; color: #e0e0e0; min-height: 100vh; }
-    header { background: #1a1a1a; border-bottom: 1px solid #2a2a2a; padding: 1.25rem 2rem; display: flex; align-items: center; gap: 12px; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0f0f0f; color: #e0e0e0; min-height: 100vh; display: flex; flex-direction: column; }
+
+    header { background: #1a1a1a; border-bottom: 1px solid #2a2a2a; padding: 1.25rem 2rem; display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
     header h1 { font-size: 18px; font-weight: 500; color: #fff; }
     header .tag { font-size: 11px; background: #2a2a2a; color: #aaa; padding: 3px 10px; border-radius: 99px; }
-    .wrap { max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem; }
+
+    .layout { display: flex; flex: 1; max-width: 960px; margin: 0 auto; width: 100%; padding: 2rem 1.5rem; gap: 2rem; align-items: flex-start; }
+
+    .sidebar { width: 160px; flex-shrink: 0; position: sticky; top: 2rem; }
+    .sidebar-label { font-size: 10px; font-weight: 500; color: #444; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 10px; }
+    .version-item { display: flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 8px; cursor: pointer; font-size: 13px; color: #666; transition: background 0.15s, color 0.15s; margin-bottom: 4px; border: 1px solid transparent; }
+    .version-item:hover { background: #1a1a1a; color: #ccc; }
+    .version-item.active { background: #1e1e1e; color: #fff; border-color: #2e2e2e; }
+    .version-item .v-dot { width: 6px; height: 6px; border-radius: 50%; background: #333; flex-shrink: 0; }
+    .version-item.active .v-dot { background: #4ade80; }
+    .version-item .v-label { font-weight: 500; }
+    .version-item .v-date { font-size: 11px; color: #444; margin-top: 1px; }
+    .version-item-inner { display: flex; flex-direction: column; }
+    .latest-badge { font-size: 9px; background: #0d2e1f; color: #4ade80; padding: 1px 6px; border-radius: 99px; margin-left: auto; flex-shrink: 0; }
+
+    .main { flex: 1; min-width: 0; }
     .version-bar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 2rem; }
     .version-text { font-size: 26px; font-weight: 500; color: #fff; }
     .date-text { font-size: 13px; color: #666; }
@@ -26,31 +42,22 @@
     .badge-new { background: #0d2e1f; color: #4ade80; }
     .badge-fix { background: #2e1f0d; color: #f59e0b; }
 
-    /* 로딩 */
-    #loading {
-      text-align: center;
-      padding: 4rem 1rem;
-      color: #555;
-      font-size: 14px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 14px;
-    }
-    .spinner {
-      width: 36px;
-      height: 36px;
-      border: 3px solid #2a2a2a;
-      border-top: 3px solid #aaa;
-      border-radius: 50%;
-      animation: spin 0.6s linear infinite;
-    }
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
+    #loading { text-align: center; padding: 4rem 1rem; color: #555; font-size: 14px; display: flex; flex-direction: column; align-items: center; gap: 14px; width: 100%; }
+    .spinner { width: 36px; height: 36px; border: 3px solid #2a2a2a; border-top: 3px solid #aaa; border-radius: 50%; animation: spin 0.8s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    #error { text-align: center; padding: 4rem; color: #666; font-size: 14px; width: 100%; }
 
-    #error { text-align: center; padding: 4rem; color: #666; font-size: 14px; }
-    footer { text-align: center; padding: 2rem; font-size: 12px; color: #333; }
+    footer { text-align: center; padding: 2rem; font-size: 12px; color: #333; flex-shrink: 0; }
+
+
+    @media (max-width: 600px) {
+      .layout { flex-direction: column; padding: 1.25rem 1rem; gap: 1.25rem; }
+      .sidebar { width: 100%; position: static; }
+      .sidebar-label { margin-bottom: 8px; }
+      .version-list { display: flex; flex-wrap: wrap; gap: 6px; }
+      .version-item { margin-bottom: 0; padding: 6px 12px; }
+      .v-date { display: none; }
+    }
   </style>
 </head>
 <body>
@@ -60,19 +67,25 @@
   <span class="tag" id="header-version">로드 중...</span>
 </header>
 
-<div class="wrap">
+<div class="layout">
   <div id="loading">
     <div class="spinner"></div>
     패치노트를 불러오는 중...
   </div>
   <div id="error" style="display:none">업데이트 정보를 불러오지 못했습니다.</div>
-  <div id="content" style="display:none">
+
+  <aside class="sidebar" id="sidebar" style="display:none">
+    <div class="sidebar-label">버전 히스토리</div>
+    <div class="version-list" id="version-list"></div>
+  </aside>
+
+  <main class="main" id="main" style="display:none">
     <div class="version-bar">
       <span class="version-text" id="version-text"></span>
       <span class="date-text" id="date-text"></span>
     </div>
     <div id="blocks"></div>
-  </div>
+  </main>
 </div>
 
 <footer>DEX</footer>
@@ -81,6 +94,9 @@
 const UPDATE_URL = './update.json';
 const PLACEHOLDER = '<div class="card-img-placeholder"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#333" stroke-width="1.5"/></svg></div>';
 
+let allData = null;
+let imageCache = {};
+
 function extractAssetId(imageStr) {
   if (!imageStr) return null;
   const match = imageStr.match(/(\d{6,})/);
@@ -88,23 +104,23 @@ function extractAssetId(imageStr) {
 }
 
 async function fetchImageURLs(assetIds) {
-  const ids = assetIds.join(',');
-  try {
-    const res = await fetch(
-      `https://thumbnails.roproxy.com/v1/assets?assetIds=${ids}&returnPolicy=PlaceHolder&size=150x150&format=Png&isCircular=false`
-    );
-    if (!res.ok) return {};
-    const data = await res.json();
-    const map = {};
-    (data.data || []).forEach(entry => {
-      if (entry.state === 'Completed') {
-        map[String(entry.targetId)] = entry.imageUrl;
+  const uncached = assetIds.filter(id => !(id in imageCache));
+  if (uncached.length > 0) {
+    try {
+      const res = await fetch(
+        `https://thumbnails.roproxy.com/v1/assets?assetIds=${uncached.join(',')}&returnPolicy=PlaceHolder&size=150x150&format=Png&isCircular=false`
+      );
+      if (res.ok) {
+        const data = await res.json();
+        (data.data || []).forEach(entry => {
+          if (entry.state === 'Completed') {
+            imageCache[String(entry.targetId)] = entry.imageUrl;
+          }
+        });
       }
-    });
-    return map;
-  } catch (e) {
-    console.error('이미지 fetch 실패:', e);
-    return {};
+    } catch (e) {
+      console.error('이미지 fetch 실패:', e);
+    }
   }
 }
 
@@ -112,34 +128,75 @@ async function load() {
   try {
     const res = await fetch(UPDATE_URL);
     if (!res.ok) throw new Error('fetch failed');
-    const data = await res.json();
+    allData = await res.json();
 
-    const assetIds = (data.blocks || [])
-      .filter(b => b.type === 'card' && b.image)
-      .map(b => extractAssetId(b.image))
-      .filter(Boolean);
+    const allAssetIds = [];
+    (allData.versions || []).forEach(v => {
+      (v.blocks || []).forEach(b => {
+        if (b.type === 'card' && b.image) {
+          const id = extractAssetId(b.image);
+          if (id && !allAssetIds.includes(id)) allAssetIds.push(id);
+        }
+      });
+    });
 
-    const imageMap = assetIds.length > 0 ? await fetchImageURLs(assetIds) : {};
+    if (allAssetIds.length > 0) await fetchImageURLs(allAssetIds);
 
-    render(data, imageMap);
+    renderSidebar();
+
+    const latest = allData.latest;
+    const firstVer = (allData.versions || []).find(v => v.version === latest) || allData.versions[0];
+    if (firstVer) renderVersion(firstVer);
+
+    document.getElementById('loading').style.display = 'none';
+    document.getElementById('sidebar').style.display = '';
+    document.getElementById('main').style.display = '';
+
   } catch (e) {
     document.getElementById('loading').style.display = 'none';
     document.getElementById('error').style.display = 'block';
   }
 }
 
-function render(data, imageMap) {
-  document.getElementById('loading').style.display = 'none';
-  document.getElementById('content').style.display = 'block';
-  document.getElementById('version-text').textContent = data.version || '';
-  document.getElementById('date-text').textContent = data.date || '';
-  document.getElementById('header-version').textContent = data.version || '';
-  document.title = '패치노트 ' + (data.version || '');
+function renderSidebar() {
+  const list = document.getElementById('version-list');
+  list.innerHTML = '';
+  const latest = allData.latest;
+
+  (allData.versions || []).forEach(v => {
+    const item = document.createElement('div');
+    item.className = 'version-item';
+    item.dataset.version = v.version;
+    item.innerHTML = `
+      <div class="v-dot"></div>
+      <div class="version-item-inner">
+        <span class="v-label">${v.version}</span>
+        <span class="v-date">${v.date || ''}</span>
+      </div>
+      ${v.version === latest ? '<span class="latest-badge">최신</span>' : ''}
+    `;
+    item.addEventListener('click', () => {
+      document.querySelectorAll('.version-item').forEach(el => el.classList.remove('active'));
+      item.classList.add('active');
+      renderVersion(v);
+    });
+    list.appendChild(item);
+  });
+
+  const latestItem = list.querySelector(`[data-version="${latest}"]`);
+  if (latestItem) latestItem.classList.add('active');
+}
+
+function renderVersion(vData) {
+  document.getElementById('version-text').textContent = vData.version || '';
+  document.getElementById('date-text').textContent = vData.date || '';
+  document.getElementById('header-version').textContent = vData.version || '';
+  document.title = '패치노트 ' + (vData.version || '');
 
   const blocksEl = document.getElementById('blocks');
   blocksEl.innerHTML = '';
 
-  (data.blocks || []).forEach(block => {
+  (vData.blocks || []).forEach(block => {
     if (block.type === 'title') {
       const el = document.createElement('div');
       el.className = 'section-title';
@@ -155,7 +212,7 @@ function render(data, imageMap) {
 
       const imgWrapper = document.createElement('div');
       const assetId = extractAssetId(block.image);
-      const imageUrl = assetId ? imageMap[assetId] : null;
+      const imageUrl = assetId ? imageCache[assetId] : null;
 
       if (imageUrl) {
         const img = document.createElement('img');
@@ -171,13 +228,16 @@ function render(data, imageMap) {
       const body = document.createElement('div');
       body.className = 'card-body';
       body.innerHTML =
-        (block.subtitle ? '<div class="badge ' + badgeClass + '">' + block.subtitle + '</div>' : '') +
-        '<div class="card-title">' + (block.title || '') + '</div>' +
-        '<div class="card-desc">' + (block.description || '') + '</div>';
+        (block.subtitle ? `<div class="badge ${badgeClass}">${block.subtitle}</div>` : '') +
+        `<div class="card-title">${block.title || ''}</div>` +
+        `<div class="card-desc">${block.description || ''}</div>`;
       card.appendChild(body);
       blocksEl.appendChild(card);
     }
   });
+
+  // 상단으로 스크롤
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 load();
