@@ -54,6 +54,28 @@
 
 <script>
 const UPDATE_URL = './update.json';
+const THUMB_API  = 'https://thumbnails.roblox.com/v1/assets?assetIds={ID}&size=150x150&format=Png&isCircular=false';
+const PLACEHOLDER = `<div class="card-img-placeholder"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#333" stroke-width="1.5"/></svg></div>`;
+
+function extractAssetId(imageStr) {
+  if (!imageStr) return null;
+  const match = imageStr.match(/(\d{6,})/);
+  return match ? match[1] : null;
+}
+
+async function getRobloxImageUrl(assetId) {
+  try {
+    const url = THUMB_API.replace('{ID}', assetId);
+    const res = await fetch(url);
+    if (!res.ok) return null;
+    const data = await res.json();
+    const entry = data.data?.[0];
+    if (!entry || entry.state !== 'Completed') return null;
+    return entry.imageUrl || null;
+  } catch {
+    return null;
+  }
+}
 
 async function load() {
   try {
@@ -89,21 +111,36 @@ function render(data) {
       const isNew = block.subtitle && block.subtitle.includes('신규');
       const badgeClass = isNew ? 'badge-new' : 'badge-fix';
 
-      const imgHtml = block.image
-        ? `<img class="card-img" src="${block.image}" onerror="this.outerHTML='<div class=card-img-placeholder><svg width=24 height=24 viewBox=\\'0 0 24 24\\' fill=none><circle cx=12 cy=12 r=10 stroke=#333 stroke-width=1.5/></svg></div>'" />`
-        : `<div class="card-img-placeholder"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#333" stroke-width="1.5"/></svg></div>`;
-
       const card = document.createElement('div');
       card.className = 'card';
-      card.innerHTML = `
-        ${imgHtml}
-        <div class="card-body">
-          ${block.subtitle ? `<div class="badge ${badgeClass}">${block.subtitle}</div>` : ''}
-          <div class="card-title">${block.title || ''}</div>
-          <div class="card-desc">${block.description || ''}</div>
-        </div>
+
+      const imgWrapper = document.createElement('div');
+      imgWrapper.innerHTML = PLACEHOLDER;
+      card.appendChild(imgWrapper);
+
+      const body = document.createElement('div');
+      body.className = 'card-body';
+      body.innerHTML = `
+        ${block.subtitle ? `<div class="badge ${badgeClass}">${block.subtitle}</div>` : ''}
+        <div class="card-title">${block.title || ''}</div>
+        <div class="card-desc">${block.description || ''}</div>
       `;
+      card.appendChild(body);
       blocksEl.appendChild(card);
+
+      const assetId = extractAssetId(block.image);
+      if (assetId) {
+        getRobloxImageUrl(assetId).then(url => {
+          if (url) {
+            const img = document.createElement('img');
+            img.className = 'card-img';
+            img.src = url;
+            img.onerror = () => {};
+            imgWrapper.innerHTML = '';
+            imgWrapper.appendChild(img);
+          }
+        });
+      }
     }
   });
 }
