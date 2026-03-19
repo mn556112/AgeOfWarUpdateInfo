@@ -41,3 +41,18 @@
 ## 웹
 
 https://mn556112.github.io/AgeOfWarUpdateInfo/
+
+## 미리보기
+
+<div align="center">
+  <table>
+    <tr>
+      <td align="center"><b>인게임</b></td>
+      <td align="center"><b>웹</b></td>
+    </tr>
+    <tr>
+      <td><img width="488" alt="인게임" src="https://github.com/user-attachments/assets/09fcbc16-c04b-4118-8b96-6ad68776d72b"/></td>
+      <td><img width="488" alt="웹" src="https://github.com/user-attachments/assets/f1bb1398-d27a-4f36-a578-c3ee5c090f9a"/></td>
+    </tr>
+  </table>
+</div>
