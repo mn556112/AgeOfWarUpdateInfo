@@ -60,22 +60,14 @@
         { "type": "title", "text": "버그 수정" },
         {
           "type": "card",
-<<<<<<< HEAD
           "image": "90520565732225",
-=======
-          "image": "http://www.roblox.com/asset/?id=105830632644718",
->>>>>>> 009762febb19c16fb30bd3f9adbe02374a134132
           "title": "기타 버그 수정",
           "description": "테스트",
           "subtitle": "버그수정"
         },
         {
           "type": "card",
-<<<<<<< HEAD
           "image": "90520565732225",
-=======
-          "image": "http://www.roblox.com/asset/?id=105830632644718",
->>>>>>> 009762febb19c16fb30bd3f9adbe02374a134132
           "title": "ㅇㅇ",
           "description": "그래",
           "subtitle": "버그수정"
