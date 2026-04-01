@@ -35,6 +35,13 @@
           "description": "건물 건설·관리 UI의 건물 정보 화면 가독성과 편의성을 개선하였습니다 [Thanks.To TTsseu, gimhyeongjun6582]",
           "subtitle": "신규 업데이트!"
         },
+                {
+          "type": "card",
+          "image": "105830632644718",
+          "title": "맵 확장!",
+          "description": "맵이 더 넓어졌습니다! 이제 한번의 실수로 패배할 일이 줄었습니다!",
+          "subtitle": "신규 업데이트!"
+        },
         {
           "type": "card",
           "image": "89920943908456",
@@ -79,6 +86,13 @@
           "description": "중세포병의 공격력이 30에서 40으로 증가하였습니다.",
           "subtitle": "밸런스 패치"
         },
+          {
+          "type": "card",
+          "image": "15290396148",
+          "title": "원시인",
+          "description": "원시인의 체력이 60에서 70으로 증가하였습니다.",
+          "subtitle": "밸런스 패치"
+        },
         {
           "type": "card",
           "image": "15290396148",
@@ -105,6 +119,13 @@
           "image": "15290396148",
           "title": "기사의 기물",
           "description": "기사의 기물의 소환시간이 9초에서 10초로 증가하였습니다",
+          "subtitle": "밸런스 패치"
+        },
+        {
+          "type": "card",
+          "image": "15290396148",
+          "title": "스타팅 타워",
+          "description": "초반 스타팅 타워의 개수가 1개에서 2개로 늘어났습니다!",
           "subtitle": "밸런스 패치"
         },
         {
