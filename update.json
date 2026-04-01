@@ -64,6 +64,13 @@
           "description": "건물관리 UI에서 건물을 판매시 가끔 판매한 건물이 뜨는 버그를 수정하였습니다.",
           "subtitle": "버그 수정"
         },  
+        {
+          "type": "card",
+          "image": "90520565732225",
+          "title": "투사체 Tween 최적화",
+          "description": "투사체 관련 Tween 버그/ 메모리 누수 문제를 해결하였습니다",
+          "subtitle": "버그 수정"
+        },
         { "type": "title", "text": "밸런스 패치" },
         {
           "type": "card",
