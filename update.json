@@ -23,6 +23,13 @@
         },
         {
           "type": "card",
+          "image": "112900160687847",
+          "title": "싱글플레이!",
+          "description": "이제 전쟁시대를 봇과 전투하며 혼자 즐길 수 있습니다!",
+          "subtitle": "신규 업데이트!"
+        },
+        {
+          "type": "card",
           "image": "105830632644718",
           "title": "건물 건설/관리 UI 개선",
           "description": "건물 건설·관리 UI의 건물 정보 화면 가독성과 편의성을 개선하였습니다 [Thanks.To TTsseu, gimhyeongjun6582]",
