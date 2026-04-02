@@ -35,7 +35,14 @@
           "description": "건물 건설·관리 UI의 건물 정보 화면 가독성과 편의성을 개선하였습니다 [Thanks.To TTsseu, gimhyeongjun6582]",
           "subtitle": "신규 업데이트!"
         },
-                {
+        {
+          "type": "card",
+          "image": "105830632644718",
+          "title": "대격변",
+          "description": "전반적인 방어타워의 체력이 대폭 상승하였습니다! <br> 건물 유닛 생산속도가 전반적으로 3초가 줄었습니다!",
+          "subtitle": "신규 업데이트!"
+        },
+        {
           "type": "card",
           "image": "105830632644718",
           "title": "맵 확장!",
