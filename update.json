@@ -21,12 +21,19 @@
           "description": "싱글플레이 봇이 더 똑똑해졌습니다! 이제 당신이 지은 건물을 토대로 봇이 전략을 바꿉니다!",
           "subtitle": "신규 업데이트!"
         },
+          {
+          "type": "card",
+          "image": "140144903024182",
+          "title": "에어쉽!",
+          "description": "강력한 공중공격 데미지를 자랑하는 에어쉽이 등장하였습니다!",
+          "subtitle": "신규 유닛!"
+        },
         { "type": "title", "text": "버그 수정" },
         {
           "type": "card",
           "image": "90520565732225",
           "title": "패스파인딩",
-          "description": "유닛이 MOVE 상태중 아무 이유 없이 멈추는 버그를 수정하였습니다",
+          "description": "유닛이 MOVE 상태중 아무 이유 없이 멈추는 버그를 수정하였습니다 (아마도)",
           "subtitle": "버그 수정"
         },  
         { "type": "title", "text": "밸런스 패치" },
