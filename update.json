@@ -1,5 +1,5 @@
 {
-  "latest": "v0.4.2",
+  "latest": "v0.4.2 - Live",
   "banners": [
     { "image": "87308417255126", "label": "전쟁시대 업데이트 공지에 오신것을 환영합니다!" },
     { "image": "82676630395014",    "label": "화물 비행선!" },
@@ -9,8 +9,8 @@
   ],
   "versions": [
       {
-      "version": "v0.4.2",
-      "date": "2025-04-03",
+      "version": "v0.4.2 - Live",
+      "date": "진행중",
       "critical": false,
       "blocks": [
         { "type": "title", "text": "v0.4.2 패치노트" },
