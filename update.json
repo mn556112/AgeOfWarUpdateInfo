@@ -1,5 +1,5 @@
 {
-  "latest": "v0.4.2 - LIVE",
+  "latest": "v0.4.2",
   "banners": [
     { "image": "87308417255126", "label": "전쟁시대 업데이트 공지에 오신것을 환영합니다!" },
     { "image": "82676630395014",    "label": "화물 비행선!" },
@@ -9,11 +9,11 @@
   ],
   "versions": [
   {
-    "version": "v0.4.2 - LIVE",
-    "date": "진행중",
+    "version": "v0.4.2",
+    "date": "2026-04-10",
     "critical": false,
     "blocks": [
-      { "type": "title", "text": "v0.4.2 패치노트 - LIVE" },
+      { "type": "title", "text": "v0.4.2 패치노트" },
 
       { "type": "title", "text": "신규 업데이트" },
 
@@ -26,7 +26,7 @@
       },
       {
         "type": "card",
-        "image": "112900160687847",
+        "image": "105830632644718",
         "title": "알림UI!",
         "description": "알림 UI를 통해 전장 상황을 빠르게 파악해보세요!",
         "subtitle": "신규 업데이트"
