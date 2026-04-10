@@ -1,5 +1,5 @@
 {
-  "latest": "v0.4.2",
+  "latest": "v0.4.3 - Live",
   "banners": [
     { "image": "87308417255126", "label": "전쟁시대 업데이트 공지에 오신것을 환영합니다!" },
     { "image": "82676630395014",    "label": "화물 비행선!" },
@@ -8,6 +8,37 @@
     { "image": "104588037438878",    "label": "새로워진 건물 관리 UI!" }
   ],
   "versions": [
+      {
+    "version": "v0.4.3 - Live",
+    "date": "진행중",
+    "critical": false,
+    "blocks": [
+      { "type": "title", "text": "v0.4.3 패치노트" },
+
+      { "type": "title", "text": "신규 업데이트" },
+
+
+      { "type": "title", "text": "신규 유닛" },
+
+      { "type": "title", "text": "버그 수정" },
+
+      { "type": "title", "text": "밸런스 패치" },
+        {
+        "type": "card",
+        "image": "15290396148",
+        "title": "방벽",
+        "description": "전반적인 방벽 쉴드가 50%증가하였습니다.",
+        "subtitle": "밸런스"
+      },
+      {
+        "type": "card",
+        "image": "15290396148",
+        "title": "안내",
+        "description": "해당 패치노트는 라이브 상태이며 언제든지 변경될 수 있습니다.",
+        "subtitle": "공지"
+      }
+    ]
+  },
   {
     "version": "v0.4.2",
     "date": "2026-04-10",
@@ -107,14 +138,6 @@
         "title": "인구수",
         "description": "스타팅 인구수: 25 → 30",
         "subtitle": "밸런스"
-      },
-
-      {
-        "type": "card",
-        "image": "15290396148",
-        "title": "안내",
-        "description": "해당 패치노트는 라이브 상태이며 언제든지 변경될 수 있습니다.",
-        "subtitle": "공지"
       }
     ]
   },
