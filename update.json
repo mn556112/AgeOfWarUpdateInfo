@@ -21,9 +21,15 @@
       { "type": "title", "text": "신규 유닛" },
 
       { "type": "title", "text": "버그 수정" },
-
+      {
+        "type": "card",
+        "image": "90520565732225",
+        "title": "패스파인딩",
+        "description": "유닛이 이동 중 이유 없이 멈추는 문제를 수정했습니다. (제발x2)",
+        "subtitle": "버그 수정"
+      },
       { "type": "title", "text": "밸런스 패치" },
-        {
+      {
         "type": "card",
         "image": "15290396148",
         "title": "방벽",
