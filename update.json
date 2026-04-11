@@ -16,7 +16,13 @@
       { "type": "title", "text": "v0.4.3 패치노트" },
 
       { "type": "title", "text": "신규 업데이트" },
-
+        {
+          "type": "card",
+          "image": "105830632644718",
+          "title": "필살기!",
+          "description": "위험한 상황일 때 돈을 사용하여 필살기를 시전해 위기를 기회로 만들어보세요!",
+          "subtitle": "신규 업데이트!"
+        },
 
       { "type": "title", "text": "신규 유닛" },
 
