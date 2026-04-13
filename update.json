@@ -31,7 +31,13 @@
           "subtitle": "신규 업데이트!"
         },
       { "type": "title", "text": "신규 유닛" },
-
+        {
+          "type": "card",
+          "image": "73543053310938",
+          "title": "대공포!",
+          "description": "공중 유닛만 공격하는 대공 방어 타워입니다. 광역 피해를 가하며 다수의 적을 동시에 제압합니다.",
+          "subtitle": "신규 방어타워!"
+        },
       { "type": "title", "text": "버그 수정" },
       {
         "type": "card",
