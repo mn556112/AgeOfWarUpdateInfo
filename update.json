@@ -61,6 +61,13 @@
         "description": "전반적인 방벽 쉴드가 50%증가하였습니다.",
         "subtitle": "밸런스"
       },
+            {
+        "type": "card",
+        "image": "15290396148",
+        "title": "필살기",
+        "description": "전반적인 필살기 비용이 증가했습니다.",
+        "subtitle": "밸런스"
+      },
       {
         "type": "card",
         "image": "15290396148",
